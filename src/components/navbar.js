@@ -2,13 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import '../CSS/navbar.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AddIcon from '@mui/icons-material/Add';
 import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
 import { selectUser } from './Redux/userslice';
 
 function Navbar() {
      const user=useSelector(selectUser);
     const [isSidebarVisible, setSidebarVisibility] = useState(false);
+    const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     setSidebarVisibility(true);
@@ -16,6 +19,9 @@ function Navbar() {
 
   const handleMouseLeave = () => {
     setSidebarVisibility(false);
+  };
+  const handleAddContact = () => {
+    navigate('/addContact');
   };
 
   return (
@@ -33,7 +39,7 @@ function Navbar() {
         <li className="nav-item">
           <a className="nav-link">Groups</a>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" onClick={handleAddContact}>
           <a className="nav-link"> ADD Contact</a>
         </li>
       </ul>
