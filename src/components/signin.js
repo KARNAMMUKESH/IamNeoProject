@@ -8,37 +8,7 @@ import { selectUser } from './Redux/userslice';
 import "../CSS/sign.css"
 
 const SignInForm = () => {
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-  
-    // const handleUsernameChange = (e) => {
-    //   setUsername(e.target.value);
-    // };
-  
-    // const handlePasswordChange = (e) => {
-    //   setPassword(e.target.value);
-    // };
-  
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   // Send a POST request to the backend to create a new user
-    //   // You can use axios or fetch to make the API call
-    //   const user = {
-    //     username: username,
-    //     password: password,
-    //   };
-    //   // Make the API call to the backend
-    //   // Example using axios:
-    //   axios.get('/api/signin/'+username+'/'+password)
-    //     .then((response) => {
-    //       console.log(response.data);
-    //       // Redirect to the login page or display a success message
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //       // Handle error, e.g., display an error message
-    //     });
-    // };
+   
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
