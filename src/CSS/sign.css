@@ -1,14 +1,11 @@
-@use postcss-preset-env {
-    stage: 0;
-  }
+
   
-  /* config.css */
   
   :root {
-    --baseColor: #606468;
+    --baseColor: #0f0f0f;
   }
   
-  /* helpers/align.css */
+ 
   
   .align {
      display: grid;
@@ -35,7 +32,7 @@
     
   }
   
-  /* helpers/hidden.css */
+  
   
   .hidden {
     border: 0;
@@ -48,25 +45,14 @@
     width: 1px;
   }
   
-  /* helpers/icon.css */
+ 
   
   :root {
     --iconFill: var(--baseColor);
   }
   
-  .icons {
-    display: none;
-  }
   
-  .icon {
-    block-size: 1em;
-    display: inline-block;
-    fill: var(--iconFill);
-    inline-size: 1em;
-    vertical-align: middle;
-  }
   
-  /* layout/base.css */
   
   :root {
     --htmlFontSize: 100%;
@@ -81,9 +67,9 @@
     --bodyLineHeight: 1.5;
   }
   
-  * {
+  /* * {
     box-sizing: inherit;
-  }
+  } */
   
   html {
     box-sizing: border-box;
@@ -102,7 +88,7 @@
     min-block-size: 100vh;
   }
   
-  /* modules/anchor.css */
+ 
   
   :root {
     --anchorColor: #eee;
@@ -119,7 +105,7 @@
     text-decoration: underline;
   }
   
-  /* modules/form.css */
+  
   
   :root {
     --formGap: 0.875rem;
@@ -159,7 +145,7 @@
     flex: 1;
   }
   
-  /* modules/login.css */
+  
   
   :root {
     --loginBorderRadus: 0.25rem;
@@ -172,7 +158,7 @@
   
     --loginSubmitBackgroundColor: #e007fd;
     --loginSubmitColor: #eee;
-    --loginSubmitHoverBackgroundColor: #b659c9;
+    --loginSubmitHoverBackgroundColor: #cb4de4;
   }
   
   .login {
@@ -220,7 +206,7 @@
     background-color: var(--loginSubmitHoverBackgroundColor);
   }
   
-  /* modules/text.css */
+  
   
   p {
     margin-block: 1.5rem;
