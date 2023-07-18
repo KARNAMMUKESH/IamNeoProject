@@ -4,6 +4,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
+    color: #ece5e5;
   }
   
   .navbar-icon {
@@ -16,8 +17,14 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    margin-left: 1080px;
+    margin-left: 40px;
   }
+  .search-bar {
+    margin-left: 800px;
+    margin-bottom: 5px;
+    
+  }
+  
   .navuser-name
   {
     color: aliceblue;

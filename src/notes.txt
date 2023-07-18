@@ -1,0 +1,98 @@
+package com.example.demo.controller;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.models.userdetails;
+import com.example.demo.repo.repi;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
+public class apicontroller {
+	
+	@Autowired
+	repi repo;
+	
+	
+	@GetMapping("/geti")
+	Collection<userdetails> get()
+	{
+		return repo.findAll();
+	}
+	@PostMapping("/api/signup")
+    public ResponseEntity<?> signUp(@Validated @RequestBody userdetails user) {
+//        if (repo.findByemail(user.getEmail()) != null) {
+//            return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists");
+//        }
+
+        // Save the user to the database
+        repo.save(user);
+
+        return ResponseEntity.ok("User created successfully");
+    }
+	@GetMapping("/user/{user}/{password}")
+	public ResponseEntity<?> signin(@PathVariable String user,@PathVariable String password)
+	{
+		if(repo.finduser(user)!=null)
+		{
+			if(repo.check(user, password)!=null)
+			{
+				return ResponseEntity.ok("User logined");
+			}
+			else
+			{
+				return ResponseEntity.ok("Wrong Creditals");
+			}
+		}
+		else
+		{
+			return ResponseEntity.ok("User does not exists");
+		}
+	}
+	
+//	@GetMapping("/get/{city}")
+//	public List<model> getbyid(@PathVariable String city){
+//		return repo.findbycity(city);
+//	}
+	
+
+}
+********************************************************************************************
+package com.example.demo.repo;
+
+import java.util.List;
+
+//import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.example.demo.models.model;
+import com.example.demo.models.userdetails;
+
+public interface repi extends JpaRepository<userdetails,String> {
+	
+	userdetails findByemail(String email);
+//	@Query(value = "select * from model where city like %?1", nativeQuery=true)
+//	 public List<model> findbycity (String city);
+	@Query(value ="select * from userdetails where email like %?1",nativeQuery=true)
+	public List<userdetails> finduser(String user);
+	
+	@Query(value="select * from userdetails where email like %?1 and password like %?1",nativeQuery=true)
+	public List<userdetails> check(String user,String password);
+	
+//	 
+//	 
+	
+
+}
+

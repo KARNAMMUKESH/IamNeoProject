@@ -1,108 +1,116 @@
 import React, { useState } from 'react';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import Navbar from './navbar';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import "../CSS/addcontact.css"
 
-const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+function AddContactForm() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
-  const [jobTitle, setJobTitle] = useState('');
-  const [company, setCompany] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [content, setContent] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send data to server)
-    // You can access the form values from the component state variables
-    console.log({ name, phoneNumber, email, address, jobTitle, company });
-    // Reset the form
-    setName('');
-    setPhoneNumber('');
-    setEmail('');
-    setAddress('');
-    setJobTitle('');
-    setCompany('');
+    // Perform form submission or data handling here
+    // You can access the form data using the state variables (firstName, lastName, email, mobile, content)
   };
 
   return (
     <div>
-        <Navbar/>
-    <div className="contact-form-container">
-    <div className="form-box">
-      <div className="form-header">
-        <ContactPhoneIcon className="user-icon" style={{ fontSize: '100px' }}/>
-      </div>
-        <form onSubmit={handleSubmit} className="contact-form">
-          <label htmlFor="name" className="label">
-            Name:
+      <Navbar/>
+    <div className="centered-container">
+    <form autoComplete="off" spellCheck="false" className="contact" onSubmit={handleSubmit}>
+    <AccountCircleRoundedIcon className="user-icon" style={{ fontSize: '100px' }}/>
+      <div className="contact-row">
+        <div className="contact-col">
+          <div className="contact-group">
             <input
               type="text"
-              id="name"
-              className="input"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              id="first-name"
+              className="contact-input"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
             />
-          </label>
-          <label htmlFor="phoneNumber" className="label">
-            Phone Number:
+            <label htmlFor="first-name" className="contact-label">
+              Name
+            </label>
+            <span className="contact-line"></span>
+          </div>
+        </div>
+        <div className="contact-col">
+          <div className="contact-group">
             <input
-              type="tel"
-              id="phoneNumber"
-              className="input"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              type="text"
+              id="last-name"
+              className="contact-input"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
             />
-          </label>
-          <label htmlFor="email" className="label">
-            Email:
+            <label htmlFor="last-name" className="contact-label">
+              Phone Number
+            </label>
+            <span className="contact-line"></span>
+          </div>
+        </div>
+      </div>
+      <div className="contact-row">
+        <div className="contact-col">
+          <div className="contact-group">
             <input
               type="email"
               id="email"
-              className="input"
+              className="contact-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
-          </label>
-          <label htmlFor="address" className="label">
-            Address:
+            <label htmlFor="email" className="contact-label">
+              Email 
+            </label>
+            <span className="contact-line"></span>
+          </div>
+        </div>
+        <div className="contact-col">
+          <div className="contact-group">
             <input
-              type="text"
-              id="address"
-              className="input"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              type="number"
+              id="mobile"
+              className="contact-input"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              required
             />
-          </label>
-          <label htmlFor="jobTitle" className="label">
-            Job Title:
-            <input
-              type="text"
-              id="jobTitle"
-              className="input"
-              value={jobTitle}
-              onChange={(e) => setJobTitle(e.target.value)}
-            />
-          </label>
-          <label htmlFor="company" className="label">
-            Company
-            <input
-              type="text"
-              id="company"
-              placeholder="Company"
-              className="input"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-            />
-          </label>
-          <button type="submit" className="button">
-            Add Contact
-          </button>
-        </form>
+            <label htmlFor="mobile" className="contact-label">
+              Job
+            </label>
+            <span className="contact-line"></span>
+          </div>
+        </div>
       </div>
+      <div className="contact-boxed">
+        <textarea
+          id="content"
+          className="contact-input"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+        ></textarea>
+        <label htmlFor="content" className="contact-label">
+          Address
+        </label>
+        <span className="contact-line"></span>
+      </div>
+      <button type="submit" className="contact-button">
+        Add Contact
+      </button>
+    </form>
     </div>
     </div>
   );
-};
+}
 
-export default ContactForm;
+export default AddContactForm;

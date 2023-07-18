@@ -23,7 +23,7 @@ const SignInForm = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login({name:username, password:password,loggedIn:true}));
-    navigate('/navbar');
+    navigate('/contact');
   };
 
   return (
